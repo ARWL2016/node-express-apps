@@ -1,0 +1,15 @@
+{
+  "name": "node-express-apps",
+  "version": "1.0.0",
+  "description": "This file is built with the Building Web Apps with Node and Express Course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Alistair Willis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
