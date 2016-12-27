@@ -1,0 +1,21 @@
+{
+  "name": "node-express-apps",
+  "description": "This file is built with the Building Web Apps with Node and Express Course",
+  "main": "index.js",
+  "authors": [
+    "Alistair Willis"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ARWL2016/node-express-apps",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
