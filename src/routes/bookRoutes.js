@@ -1,44 +1,53 @@
 var express = require('express');
-
 var bookRouter = express.Router(); 
+var mongodb = require('mongodb').MongoClient; 
+var objectId = require('mongodb').ObjectID; 
 
-var books = [
-    {
-        title: 'War and Peace', 
-        author: 'Leo Tolstoi'
-    }, 
-    {
-        title: 'Ulysses', 
-        author: 'James Joyce'
-    },
-    {
-        title: 'Crime and Punishment', 
-        author: 'Fyodor Dostoyevsky'
-    },
-    {
-        title: 'The Rainbow', 
-        author: 'DH Lawrence'
-    }
-]; 
+var router = function(nav) {
+     
 
 bookRouter.route('/')
     .get(function(req, res){
-        res.render('books', {
-            title: 'Books', 
-            nav: [{
-                Link:'/Books', 
-                Text: 'Books'
-            }, {
-                Link:'/Authors', 
-                Text: 'Authors'
-            }],
-            books: books
-            }); 
-    });
+        var url = 'mongodb://localhost:27017/libraryApp';
 
-bookRouter.route('/single')
+        mongodb.connect(url, function (err, db){
+            var collection = db.collection('books');
+
+            collection.find({}).toArray(
+                function (err, results) {
+                    res.render('bookListView', {
+                        title: 'Books', 
+                        nav: nav,
+                        books: results
+                    });
+                } 
+            );
+        });
+
+         
+    }); //get
+
+bookRouter.route('/:id')
     .get(function(req, res) {
-        res.send('Hello single books'); 
-    });
+        var id = new objectId(req.params.id); 
+        var url = 'mongodb://localhost:27017/libraryApp';
 
-module.exports = bookRouter; 
+        mongodb.connect(url, function (err, db){
+            var collection = db.collection('books');
+
+            collection.findOne({_id: id}, 
+                function (err, results) {
+                    res.render('bookView', {
+                        title: 'Books', 
+                        nav: nav,
+                        book: results
+                    }); //render
+                } //func
+            );
+        }); //connect
+
+    
+    }); //get
+    return bookRouter; 
+}; 
+module.exports = router; 
