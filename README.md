@@ -12,6 +12,6 @@ Contents
 4. Routing   
 5. Databases (Mongodb)  
 
-Not completed   
+Not yet completed   
 6. Authentication (passport)  
 7. Structure and 3rd Party APIs (Goodreads API)  
