@@ -5,6 +5,10 @@ https://app.pluralsight.com/player?course=nodejs-express-web-applications&author
 - Pluralsight Node Path (intermediate)
 - Jonathan Mills
 
+####Startup
+- `mongod`
+- `npm start`
+
 Contents  
 1. Express  
 2. Gulp (Bootstrap templates, Bower, JSHint, Wiredep, Nodemon, Gulp-inject)  
