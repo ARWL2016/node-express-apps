@@ -1,15 +1,13 @@
-## Building Web Apps with Node and Express
+## Building Web Apps with Node and Express (PS: Mills)
 
 https://app.pluralsight.com/player?course=nodejs-express-web-applications&author=jonathan-mills&name=nodejs-express-web-applications-m5&clip=1 
+https://github.com/ARWL2016/node-express-apps 
 
-- Pluralsight Node Path (intermediate)
-- Jonathan Mills
-
-####Startup
+#### Startup
 - `mongod`
 - `npm start`
 
-Contents  
+#### Topics 
 1. Express  
 2. Gulp (Bootstrap templates, Bower, JSHint, Wiredep, Nodemon, Gulp-inject)  
 3. Templating Engines (Jade, Handlebars, EJS)  
