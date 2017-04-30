@@ -5,7 +5,8 @@ var mongodb = require('mongodb').MongoClient;
 var books = [
         {
             title: 'War and Peace', 
-            author: 'Leo Tolstoi'
+            author: 'Leo Tolstoi', 
+            bookId: 656
         }, 
         {
             title: 'Ulysses', 

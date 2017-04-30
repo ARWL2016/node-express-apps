@@ -6,14 +6,10 @@ var passport = require('passport');
 var router = function() {
   authRouter.route('/signUp')
     .post(function(req, res) {
-      console.log(req.body); 
       var url = 'mongodb://localhost:27017/libraryApp';
       mongodb.connect(url, function(err, db) {
         var collection = db.collection('users'); 
-        var user = {
-          username: req.body.userName, 
-          password: req.body.password
-        }; 
+        var user = { username: req.body.userName,  password: req.body.password }; 
 
         collection.insert(user, 
           function(err, results) {
@@ -31,9 +27,7 @@ var router = function() {
     }); 
   authRouter.route('/profile')
     .all(function(req, res, next) {
-      if(!req.user) {
-        res.redirect('/');
-      }
+      if(!req.user) res.redirect('/');
       next();
     })
     .get(function(req, res) {
