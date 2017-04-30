@@ -2,35 +2,32 @@ var http = require('http');
 var xml2js = require('xml2js'); 
 var parser = xml2js.Parser({explicitArray: false});
 
-var goodreadsService = function () {
+// note that API key is invalid
 
-  var getBookById = function(id, cb) {
+module.exports = () => {
+
+  const getBookById = (id, cb) => {
     
-    var options = {
+    const options = {
       host: 'www.goodreads.com', 
       path: '/book/show/656?format=xml&key=mN1DyVoFS4cfbCMh5HmnpA'
     };
-    var callback = function(response) {
-      var str = ''; 
 
-      response.on('data', function(chunk) {
-        str += chunk; 
+    http.request(options, (res) => {
+      let string = ''; 
+      res.on('data', (chunk) => {
+        string += chunk; 
       }); 
-      response.on('end', function() {
-        console.log(str); 
-        parser.parseString(str, 
-          function(err, result) {
-            cb(null, result.GoodreadsResponse.book);
-          });
+      res.on('end', () => {
+        console.log(string); 
+        parser.parseString(string, (err, result) => {
+          cb(null, result.GoodreadsResponse.book);
+        });
       });
-    };
-    
-    http.request(options, callback).end()
+    }).end();
 
   };
-  return {
-    getBookById: getBookById
-  }
+  return { getBookById };
 };
 
-module.exports = goodreadsService; 
+ 

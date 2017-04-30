@@ -3,10 +3,9 @@ var bookRouter = express.Router();
 var mongodb = require('mongodb').MongoClient; 
 var objectId = require('mongodb').ObjectID; 
 
-
-var router = function(nav) {
-  var bookService = require('../services/goodreadsService')()
-  var bookController = require('../controllers/bookController')(bookService, nav);
+module.exports = (nav, mongoUrl) => {
+  var bookService = require('../services/goodreadsService')();
+  var bookController = require('../controllers/bookController')(bookService, nav, mongoUrl);
   bookRouter.use(bookController.middleware); 
   bookRouter.route('/')
     .get(bookController.getIndex); 
@@ -16,5 +15,4 @@ var router = function(nav) {
 
   return bookRouter; 
 };
- 
-module.exports = router; 
+
