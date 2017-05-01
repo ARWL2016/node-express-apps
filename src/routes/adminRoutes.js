@@ -24,13 +24,29 @@ var books = [
 
 module.exports = (nav, mongoUrl) => {
   adminRouter.route('/addBooks').get((req, res) => {
-    mongodb.connect(mongoUrl, (err, db) => {
-      const collection = db.collection('books');
-      collection.insertMany(books, (err, results) => {
-        res.send(results); 
-        db.close(); 
+
+    // mongodb.connect(mongoUrl, (err, db) => {
+    //   const collection = db.collection('books');
+    //   collection.insertMany(books, (err, results) => {
+    //     res.send(results); 
+    //     db.close(); 
+    //   });
+    // });
+
+    mongodb
+      .connect(mongoUrl)
+      .then(db => {
+        const collection = db.collection('books');
+        collection.insertMany(books, (err, results) => {
+          res.send(results); 
+          db.close(); 
+        });
+      })
+      .catch(error => {
+        console.log(error); 
       });
-    });
+
+
   });
   return adminRouter; 
 };
