@@ -4,14 +4,14 @@ var mongodb = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID; 
 
 module.exports = (nav, mongoUrl) => {
-  var bookService = require('../services/goodreadsService')();
-  var bookController = require('../controllers/bookController')(bookService, nav, mongoUrl);
-  bookRouter.use(bookController.middleware); 
+  const bookService = require('../services/goodreadsService')();
+  const { middleware, getIndex, getById } = require('../controllers/bookController')(bookService, nav, mongoUrl);
+  bookRouter.use(middleware); 
   bookRouter.route('/')
-    .get(bookController.getIndex); 
+    .get(getIndex); 
 
   bookRouter.route('/:id')
-      .get(bookController.getById); 
+      .get(getById); 
 
   return bookRouter; 
 };

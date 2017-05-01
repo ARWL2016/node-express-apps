@@ -3,6 +3,7 @@ var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient; 
 var passport = require('passport'); 
 
+
 module.exports = (mongoUrl) => {
   authRouter.route('/signUp')
     .post((req, res) => {

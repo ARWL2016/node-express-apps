@@ -4,7 +4,7 @@ https://app.pluralsight.com/player?course=nodejs-express-web-applications&author
 https://github.com/ARWL2016/node-express-apps 
 
 #### Startup
-- `mongod`
+- `gulp serve` and `mongod` concurrently or: 
 - `npm start`
 
 #### Topics 
@@ -12,8 +12,6 @@ https://github.com/ARWL2016/node-express-apps
 2. Gulp (Bootstrap templates, Bower, JSHint, Wiredep, Nodemon, Gulp-inject)  
 3. Templating Engines (Jade, Handlebars, EJS)  
 4. Routing   
-5. Databases (Mongodb)  
-
-Not yet completed   
+5. Databases (Mongodb)     
 6. Authentication (passport)  
 7. Structure and 3rd Party APIs (Goodreads API)  
